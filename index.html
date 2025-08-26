@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DL25 Driving Test Report</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f5ff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2b5ba7;
+        }
+        
+        h1 {
+            color: #2b5ba7;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .agency {
+            font-weight: bold;
+            color: #2b5ba7;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #2b5ba7;
+        }
+        
+        .form-section h2 {
+            color: #2b5ba7;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 1px solid #dde5ff;
+            padding-bottom: 8px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2b5ba7;
+            font-size: 14px;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 10px 0;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .test-item {
+            padding: 10px;
+            background: white;
+            border: 1px solid #dde5ff;
+            border-radius: 5px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .signature-box {
+            border: 1px dashed #999;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            background: #f8f9ff;
+            color: #666;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-submit {
+            background: #2b5ba7;
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            background: #1e3f7a;
+        }
+        
+        .btn-reset {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-reset:hover {
+            background: #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .form-group {
+                min-width: 100%;
+            }
+            
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="agency">Driver & Vehicle Standards Agency</div>
+            <h1>Driving Test Report (DL25)</h1>
+        </header>
+        
+        <form id="dl25Form">
+            <div class="form-section">
+                <h2>Candidate Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="candidate" class="required">Candidate</label>
+                        <input type="text" id="candidate" name="candidate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testCategory" class="required">Test category</label>
+                        <input type="text" id="testCategory" name="testCategory" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address" class="required">Address</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testDate" class="required">Date</label>
+                        <input type="date" id="testDate" name="testDate" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="appRef" class="required">App ref</label>
+                        <input type="text" id="appRef" name="appRef" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testTime" class="required">Time</label>
+                        <input type="time" id="testTime" name="testTime" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="driverNo" class="required">Driver no.</label>
+                        <input type="text" id="driverNo" name="driverNo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="xCode">X</label>
+                        <input type="text" id="xCode" name="xCode">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Test Results Preference & Consent</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resultsPreference" class="required">Test results preference</label>
+                        <select id="resultsPreference" name="resultsPreference" required>
+                            <option value="">Select preference</option>
+                            <option value="post">Post</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAddress">Email address</label>
+                        <input type="email" id="emailAddress" name="emailAddress">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="required">I agree to DVSA collecting, using, storing and sharing my personal information for the purpose of carrying out the driving test.</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">I agree</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Instructor & Vehicle Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="instructorReg">Instructor reg number</label>
+                        <input type="text" id="instructorReg" name="instructorReg">
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleReg">Vehicle reg</label>
+                        <input type="text" id="vehicleReg" name="vehicleReg">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Transmission</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="manual" name="transmission" value="manual">
+                                <label for="manual">Manual</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="automatic" name="transmission" value="automatic">
+                                <label for="automatic">Automatic</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="accompaniedBy">Accompanied by</label>
+                        <input type="text" id="accompaniedBy" name="accompaniedBy">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Accompanied by type</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="ins" name="accompaniedType" value="ins">
+                                <label for="ins">Ins</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sup" name="accompaniedType" value="sup">
+                                <label for="sup">Sup</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="int" name="accompaniedType" value="int">
+                                <label for="int">Int</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other" name="accompaniedType" value="other">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Driving Test Assessment</h2>
+                <div class="test-grid">
+                    <div class="test-item">
+                        <label for="eyesightTest">Eyesight test</label>
+                        <input type="text" id="eyesightTest" name="eyesightTest">
+                    </div>
+                    <div class="test-item">
+                        <label for="moveOff">Move off</label>
+                        <input type="text" id="moveOff" name="moveOff">
+                    </div>
+                    <div class="test-item">
+                        <label for="positioning">Positioning</label>
+                        <input type="text" id="positioning" name="positioning">
+                    </div>
+                    <div class="test-item">
+                        <label for="as">AS</label>
+                        <input type="text" id="as" name="as">
+                    </div>
+                    <div class="test-item">
+                        <label for="ns">NS</label>
+                        <input type="text" id="ns" name="ns">
+                    </div>
+                    <div class="test-item">
+                        <label for="hs_ds">HS / DS</label>
+                        <input type="text" id="hs_ds" name="hs_ds">
+                    </div>
+                    <div class="test-item">
+                        <label for="safety">Safety</label>
+                        <input type="text" id="safety" name="safety">
+                    </div>
+                    <div class="test-item">
+                        <label for="control">Control</label>
+                        <input type="text" id="control" name="control">
+                    </div>
+                </div>
+                
+                <div class="test-grid">
+                    <div class="test-item">
+                        <label for="manoeuvres">Manoeuvres</label>
+                        <input type="text" id="manoeuvres" name="manoeuvres">
+                    </div>
+                    <div class="test-item">
+                        <label for="useOfMirrors">Use of mirrors</label>
+                        <input type="text" id="useOfMirrors" name="useOfMirrors">
+                    </div>
+                    <div class="test-item">
+                        <label for="reverseRight">Reverse / Right</label>
+                        <input type="text" id="reverseRight" name="reverseRight">
+                    </div>
+                    <div class="test-item">
+                        <label for="reverseParkRoad">Reverse park (road)</label>
+                        <input type="text" id="reverseParkRoad" name="reverseParkRoad">
+                    </div>
+                    <div class="test-item">
+                        <label for="signalling">Signalling</label>
+                        <input type="text" id="signalling" name="signalling">
+                    </div>
+                    <div class="test-item">
+                        <label for="reverseParkCarPark">Reverse park (car park)</label>
+                        <input type="text" id="reverseParkCarPark" name="reverseParkCarPark">
+                    </div>
+                    <div class="test-item">
+                        <label for="forwardPark">Forward park</label>
+                        <input type="text" id="forwardPark" name="forwardPark">
+                    </div>
+                    <div class="test-item">
+                        <label for="changeDirection">Change direction</label>
+                        <input type="text" id="changeDirection" name="changeDirection">
+                    </div>
+                </div>
+                
+                <div class="test-grid">
+                    <div class="test-item">
+                        <label for="control2">Control</label>
+                        <input type="text" id="control2" name="control2">
+                    </div>
+                    <div class="test-item">
+                        <label for="changeSpeed">Change speed</label>
+                        <input type="text" id="changeSpeed" name="changeSpeed">
+                    </div>
+                    <div class="test-item">
+                        <label for="observation">Observation</label>
+                        <input type="text" id="observation" name="observation">
+                    </div>
+                    <div class="test-item">
+                        <label for="signals">Signals</label>
+                        <input type="text" id="signals" name="signals">
+                    </div>
+                    <div class="test-item">
+                        <label for="showTell1">Show me / Tell me</label>
+                        <input type="text" id="showTell1" name="showTell1">
+                    </div>
+                    <div class="test-item">
+                        <label for="necessary">Necessary</label>
+                        <input type="text" id="necessary" name="necessary">
+                    </div>
+                    <div class="test-item">
+                        <label for="showTell2">Show me / Tell me</label>
+                        <input type="text" id="showTell2" name="showTell2">
+                    </div>
+                    <div class="test-item">
+                        <label for="correctly">Correctly</label>
+                        <input type="text" id="correctly" name="correctly">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Test Results & Declaration</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="licenceReceived">Licence received</label>
+                        <select id="licenceReceived" name="licenceReceived">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="passCertificate">Pass certificate number</label>
+                        <input type="text" id="passCertificate" name="passCertificate">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="required">I acknowledge receipt of my pass certificate and confirm there has been no change to my health since I last applied for a licence.</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="acknowledgement" name="acknowledgement" required>
+                                <label for="acknowledgement">I acknowledge</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Signature</label>
+                        <div class="signature-box">Sign here</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button type="submit" class="btn-submit">Submit Report</button>
+                <button type="reset" class="btn-reset">Reset Form</button>
+            </div>
+        </form>
+        
+        <div class="footer">
+            <p>© Crown copyright 07/2019 IDINT07/19 DVSA – An executive agency of the Department for Transport Form Ref: DL25_00018000-00</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('dl25Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted successfully. This is a demonstration - no data was actually sent.');
+        });
+        
+        // Show/hide email field based on results preference
+        document.getElementById('resultsPreference').addEventListener('change', function() {
+            const emailField = document.getElementById('emailAddress');
+            if (this.value === 'email') {
+                emailField.setAttribute('required', 'required');
+                emailField.parentElement.querySelector('label').classList.add('required');
+            } else {
+                emailField.removeAttribute('required');
+                emailField.parentElement.querySelector('label').classList.remove('required');
+            }
+        });
+    </script>
+</body>
+</html>
